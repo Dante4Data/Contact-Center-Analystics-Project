@@ -20,23 +20,15 @@ The data generation script creates synthetic data for the above tables. [Link to
 - Group AHT by call reason and visualize how it changes over time (monthly, daily, hourly).
 - Compare AHT across different interaction types (Chat, Inbound-Member, Inbound-All).
 
-### Agent Performance
-- Evaluate agent performance based on AHT, hold times, and after-call work durations.
-- Identify agents with high AHT and provide targeted training or skill adjustments.
-
-### Queue Performance
-- Analyze queue metrics to identify periods of high wait times and abandonment rates.
-- Adjust staffing levels or routing strategies based on queue performance data.
 
 ### Service Level Analysis
-- Assess service level performance across different intervals.
+- Assess service level performance over time.
 - Identify intervals with low service level adherence and suggest improvements.
 
 ## Visualizations and Reporting
 Using Power BI, create the following visualizations:
 - **AHT Trends:** Time series graphs showing AHT by call reason, interaction type, and agent.
 - **Service Level Performance:** Dashboards showing service level adherence and areas for improvement.
-- **Queue Metrics:** Visualizations highlighting wait times, abandonment rates, and queue volumes.
 
 ### Power BI Functionalities
 - **DAX Formulas:** Use DAX formulas to create measures and calculated columns. Examples include:
@@ -121,18 +113,12 @@ RETURN
 - **Generalization:** Insights and recommendations are based on simulated scenarios and may need adaptation for real-world application.
 
 ## Conclusion
-This project provides a comprehensive analysis of contact center performance, focusing on key metrics such as AHT, hold times, and service level adherence. The insights gained from this analysis will help in optimizing agent skill routing and improving overall service levels, ensuring that customer satisfaction is maintained.
+This project provides a comprehensive analysis of contact center performance, focusing on key metrics such as AHT, Interaction duration category, and service level adherence. The insights gained from this analysis will help in optimizing agent skill routing and improving overall service levels, ensuring that customer satisfaction is maintained.
 
 ## Future Work
 - **Real-time Data Analysis:** Integrate real-time data analysis for more dynamic decision-making.
 - **Advanced Analytics:** Implement machine learning models to predict interaction volumes and required staffing levels.
 - **Expanded Metrics:** Include additional metrics such as agent adherence and schedule efficiency.
 
-## How to Run the Project
-1. Clone the repository.
-2. Install the required Python packages using `pip install -r requirements.txt`.
-3. Run the data generation script to create the synthetic data.
-4. Use Power BI to create the visualizations and reports based on the generated data.
-
 ## Acknowledgements
-Thank you for the support and resources provided to complete this project. Special thanks to [Your Company] for the opportunity to develop and showcase my analytical skills.
+Thank you for the support and resources provided to complete this project. Special thanks to Dash BPO South Africa for the opportunity to develop and showcase my analytical skills.
