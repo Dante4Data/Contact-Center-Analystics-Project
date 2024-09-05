@@ -233,4 +233,3 @@ For questions or collaboration, please reach out:
 - **LinkedIn**: [Thando Vilakazi](https://www.linkedin.com/in/thando-vilakazi/)
 
 ---
-![image](https://github.com/user-attachments/assets/067dc799-c10b-4707-b47c-9f56a6436c6c)
