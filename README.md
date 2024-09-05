@@ -1,178 +1,225 @@
-# Contact Center Analytics Project
+# Workforce Call Analytics Project
 
 ## Overview
 
-This project focuses on analyzing key performance metrics within a contact center, specifically targeting areas crucial for Workforce Management (WFM). Metrics such as Average Handle Time (AHT), service level adherence, and call reasons are analyzed to optimize agent skill routing between chat and inbound queues. The goal is to provide actionable insights for improving service levels and ensuring they are met at each interval of the day.
+This project focuses on analyzing key performance metrics within a contact center, specifically targeting areas crucial for Workforce Management (WFM). Metrics such as Average Handle Time (AHT), service level adherence, call reasons, and sentiments are analyzed to optimize agent skill routing between chat and inbound queues. The goal is to provide actionable insights for improving service levels and ensuring they are met daily.
 
 ## Table of Contents
 
-- [Project Overview](#overview)
+- [Overview](#overview)
 - [Objectives](#objectives)
-- [Value and Distinction](#value-and-distinction)
-- [Data Generation](#data-generation)
-- [Installation](#installation)
-- [Usage](#usage)
+- [Value and Application](#value-and-application)
+- [Dataset](#dataset)
+- [Data Cleaning and Preparation](#data-cleaning-and-preparation)
 - [Analysis Plan](#analysis-plan)
-- [Visualizations and Reporting](#visualizations-and-reporting)
+  - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+  - [Statistical Analysis](#statistical-analysis)
+- [Power BI Functionalities](#power-bi-functionalities)
+- [Excel Functionalities](#excel-functionalities)
 - [Insights and Recommendations](#insights-and-recommendations)
+  - [Insights](#insights)
+  - [Recommendations](#recommendations)
 - [Limitations](#limitations)
-- [Conclusion](#conclusion)
+- [Skills Showcased](#skills-showcased)
 - [Future Work](#future-work)
 - [Acknowledgements](#acknowledgements)
 - [Contact](#contact)
 
 ## Objectives
 
-- Analyze how AHT relates to call-in reasons or case issues over time.
-- Make data-supported decisions in agent skill routing between chat and inbound queues.
-- Gather insights for service level (SL) improvements to ensure targets are met at each interval of the day.
-- Develop interactive visualizations and reports using Power BI to present the findings.
+The goal of this project is to analyze the performance of a call center company with multiple branches by exploring relationships between various factors, such as sentiment, response time, call duration, and communication channels. The analysis focuses on identifying any significant factors that may influence call center performance and customer satisfaction.
 
-## Value and Distinction
+Specific objectives include:
 
-This project is distinct because it focuses on the specific needs of WFM teams rather than general contact center metrics. By analyzing how sentiment and customer satisfaction (CSAT) impact AHT and SLAs over time, this project provides actionable insights that directly influence operational efficiency and agent performance.
+- **Channel Performance Comparison**: Compare performance across different channels (Call Center, Chatbot, Web, Email).
+- **AHT and Total Productive Time Analysis**: Analyze how Average Handle Time and total productive time vary by day and call reasons.
+- **Sentiment Correlation**: Explore whether longer or shorter calls tend to correlate with more positive or negative sentiments.
+- **Call Duration Distribution**: Determine the distribution of productive time through call reasons for each contact channel.
+- **Interaction Duration vs. Channel**: Determine whether there's a relationship between interaction duration and channel.
+- **Peak Days Identification**: Identify peak days to optimize staffing and scheduling.
+
+## Value and Application
+
+This project is distinct because it focuses on the specific needs of WFM teams from call data. By analyzing how sentiment and customer satisfaction (CSAT) relate to AHT and SLAs over time across channels of contact, this project provides actionable insights that directly influence operational efficiency and agent performance.
 
 Key distinctions include:
 
-- **Targeted Analysis for WFM:** Tailored to the needs of WFM, focusing on agent performance and scheduling optimization.
-- **Data-Driven Insights:** Utilizes advanced data cleaning, analysis, and visualization techniques to ensure relevant and actionable insights.
-- **Practical Application:** The analysis aligns with operational goals, making it useful for real-time decision-making.
+- **Targeted Analysis for WFM**: Tailored to the needs of WFM, focusing on channel performance and scheduling optimization.
+- **Data-Driven Insights**: Utilizes advanced data cleaning, statistical analysis, and visualization techniques to ensure relevant and actionable insights.
+- **Versatile Methodology**: Demonstrates methods to determine sentiment distribution by channel of contact, providing a versatile analysis methodology that can be recreated with larger datasets.
+- **Practical Application**: The analysis aligns with operational goals, making it useful for real-time decision-making.
 
-## Data Generation
+## Dataset
 
-The project involves generating synthetic data to simulate contact center operations. The following tables are created to support the analysis:
+The dataset used includes the following fields:
 
-1. **Interactions Table:** Contains details about each interaction, including AHT, call reason, and channel.
-2. **Queue Metrics Table:** Includes data on service levels, wait times, and abandonment rates.
-3. **Service Level Metrics Table:** Tracks SL adherence over time.
+- **ID**: Unique identifier for each interaction.
+- **Sentiment**: Customer sentiment (e.g., Positive, Neutral, Negative).
+- **Timestamp**: Date of the interaction (without time).
+- **C_SAT**: Customer satisfaction score (with some missing values).
+- **Reason**: Reason for the customer's contact (e.g., Billing, Technical Support).
+- **Channel**: Communication channel used (e.g., Call Center, Chatbot, Web, Email).
+- **Call Duration in Minutes**: Length of the call in minutes.
+- **Call Center**: The specific call center handling the interaction.
+- **Response Time Category**: Classification of response time (Above SLA, Within SLA, Below SLA).
 
-### Data Generation Script
+## Data Cleaning and Preparation
 
-A custom script is used to generate the synthetic data, simulating realistic contact center operations. [Link to script](path/to/script).
+The following steps were taken to prepare the data for analysis:
 
-## Installation
-
-To set up this project locally, follow these steps:
-
-1. **Clone the Repository:**
-
-   ```bash
-   git clone https://github.com/Dante4Data/contact-center-analytics.git
-   cd contact-center-analytics
-   ```
-
-2. **Install Dependencies:**
-
-   If the project has any dependencies, such as Python packages, they will be listed in a `requirements.txt` file. Install them using:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Set Up the Environment:**
-
-   Follow any additional instructions provided for environment setup.
-
-## Usage
-
-To use the tools and scripts included in this project:
-
-1. **Data Import:**
-   - Import the dataset into your preferred analysis tool (e.g., Excel, Power BI).
-
-2. **Running the Analysis:**
-   - Follow the instructions provided in the analysis plan to execute the analysis scripts.
-
-3. **Viewing the Results:**
-   - The results will be visualized using Power BI dashboards and Excel charts.
+- **Removed Irrelevant Fields**: Excluded fields like `Customer Name`, `State`, and `City` as they were irrelevant to the analysis focus.
+- **Handled Duplicates**: Removed duplicate records to ensure data integrity.
+- **Formatted Timestamp**: Adjusted the `Timestamp` field using locale settings in Power Query to ensure consistency.
+- **Added Helper Columns**:
+  - **Weekday**: Extracted the day of the week from the `Timestamp`.
+  - **Week Number**: Calculated the week number for time-based analysis.
+  - **Call Duration Category**: Categorized calls as 'Below Average', 'Average', or 'Above Average' based on call duration.
 
 ## Analysis Plan
 
-### AHT Analysis
+### Exploratory Data Analysis (EDA)
 
-- **Grouping and Visualization:** Group AHT by call reason and visualize changes over time (monthly, daily, hourly).
-- **Comparison Across Interaction Types:** Compare AHT for different interaction types (e.g., Chat, Inbound-Member, Inbound-All).
+- **Descriptive Statistics**: Calculated key metrics such as Average Duration, Average CSAT, Sum of Duration, and Count of ID.
+- **Pivot Tables and Charts**: Created pivot tables and charts to show the distribution of these metrics by sentiments, reasons, channels, and response time categories.
+- **Volume and Handle Time Analysis**:
+  - Analyzed call volumes and handle times across days of the week to identify peak days.
+  - Explored the distribution of interaction reasons and their impact on AHT.
+- **Sentiment Analysis**:
+  - Investigated the relationship between sentiment and call duration.
+  - Determined the distribution of sentiments across different channels and call reasons.
 
-### Service Level Analysis
+### Statistical Analysis
 
-- **Performance Assessment:** Assess service level performance over time and identify intervals with low adherence.
-- **Improvement Suggestions:** Based on the findings, suggest targeted improvements.
+#### Chi-Square Test of Independence
 
-## Visualizations and Reporting
+Performed Chi-Square tests to investigate whether certain categorical variables were related:
 
-Using Power BI, the following visualizations are created:
+1. **Sentiment vs. Channel**:
+   - **Objective**: To determine if customer sentiment significantly differs across communication channels.
+   - **Findings**: P-value ≥ 0.05, indicating no statistically significant relationship between sentiment and channel.
 
-- **AHT Trends:** Time series graphs showing AHT by call reason, interaction type, and agent.
-- **Service Level Performance:** Dashboards showing service level adherence and areas for improvement.
+2. **Response Time Category vs. Channel**:
+   - **Objective**: To explore if the proportion of calls within SLA differed between communication channels.
+   - **Findings**: P-value ≥ 0.05, indicating no statistically significant relationship between response time category and channel.
 
-### Power BI Functionalities
+#### ANOVA Test: Call Duration vs. Channel
 
-Examples of DAX formulas used:
+- **Objective**: To analyze whether there are significant differences in call durations across different communication channels.
+- **Findings**: P-value ≥ 0.05, indicating no statistically significant difference in the average call duration across the various communication channels.
 
-- **Total Calls:**
-    ```DAX
-    Total Calls = COUNT('Call Center (Cleaned)'[id])
-    ```
+## Power BI Functionalities
 
-- **Total Call Duration in Hrs:**
-    ```DAX
-    Total Call Duration (Hrs) = [Total Call Duration (Min)]/60
-    ```
+Utilized Power BI to create interactive visualizations and dashboards. Examples of DAX formulas used:
 
-- **Response Time Percentage:**
-    ```DAX
-    Response Time Percentage = 
-    VAR WithinSLA = SUMX(
-        'Call Center (Cleaned)',
-        IF([response_time] = "Within SLA", 1, 0)
-    )
-    VAR AboveSLA = SUMX(
-        'Call Center (Cleaned)',
-        IF([response_time] = "Above SLA", 1, 0)
-    )
-    VAR TotalCalls = COUNTROWS('Call Center (Cleaned)')
-    RETURN 
-        DIVIDE(
-            WithinSLA + AboveSLA,
-            TotalCalls
-        )
-    ```
+- **Total Calls**:
 
-### Excel Functionalities
+  ```DAX
+  Total Calls = COUNT('Call Center (Cleaned)'[ID])
+  ```
 
-- **Pivot Tables:** Create pivot tables to summarize data and identify trends.
-- **Charts:** Use Excel charts to visualize insights.
-- **Formulas:** Utilize formulas such as `SUMIF` and `AVERAGEIF` for condition-based calculations.
+- **Total Call Duration in Hours**:
+
+  ```DAX
+  Total Call Duration (Hrs) = SUM('Call Center (Cleaned)'[Call Duration in Minutes]) / 60
+  ```
+
+- **Average Call Duration**:
+
+  ```DAX
+  Average Call Duration = AVERAGE('Call Center (Cleaned)'[Call Duration in Minutes])
+  ```
+
+- **Response Time Percentage**:
+
+  ```DAX
+  Response Time Percentage = 
+  VAR WithinSLA = COUNTROWS(FILTER('Call Center (Cleaned)', 'Call Center (Cleaned)'[Response Time Category] = "Within SLA"))
+  VAR TotalCalls = COUNTROWS('Call Center (Cleaned)')
+  RETURN DIVIDE(WithinSLA, TotalCalls, 0)
+  ```
+
+### Visualizations Created
+
+1. **Call Duration Trends**: Line charts visualizing how call duration changes across weekdays.
+2. **SLA Adherence by Channel**: Bar charts showing SLA adherence across different communication channels.
+3. **AHT by Reason and Sentiment**: Tables displaying the relationship between AHT and call reasons, segmented by sentiment.
+4. **Sentiment Distribution**: Pie charts and bar graphs illustrating the distribution of sentiments across channels and reasons.
+
+## Excel Functionalities
+
+- **Pivot Tables**: Created to summarize data and identify trends.
+- **Charts**: Used Excel charts to visualize insights, including bar charts, line graphs, and pie charts.
+- **Formulas**: Utilized formulas such as `SUMIF`, `AVERAGEIF`, and `COUNTIF` for condition-based calculations.
 
 ## Insights and Recommendations
 
 ### Insights
 
-- **AHT by Call Reason:** Identify high AHT call reasons and target them for process improvements.
-- **Service Level Performance:** Pinpoint intervals with low adherence and investigate underlying causes.
-- **Queue Metrics:** Analyze high wait times and abandonment rates to optimize staffing and improve customer satisfaction.
+1. **Volume and Handle Time Analysis**:
+   - Interactions offered increase towards the weekend, peaking on Thursdays and Fridays.
+   - The highest number of calls are related to "Billing"; "Payments" have the least.
+   - Average handle time ranges between 23 to 25 minutes across all channels, with emails having a slightly higher AHT.
+   - No significant difference in call durations across channels (ANOVA test result).
+
+2. **Sentiment Analysis**:
+   - A large portion of interactions have negative sentiments across all channels.
+   - "Billing" is the interaction reason with the most negative sentiments on all channels.
+   - No significant relationship between sentiment and channel (Chi-Square test result).
+
+3. **Correlation of Sentiments and Call Duration**:
+   - Interactions with longer durations tend to have negative or very negative sentiments and lower average CSAT scores.
+   - Training focused on de-escalation techniques may help improve sentiments and reduce call durations.
 
 ### Recommendations
 
-- **Agent Training:** Provide targeted training for agents with high AHT or low performance metrics.
-- **Staffing Adjustments:** Adjust staffing levels during peak intervals to meet SL targets.
-- **Process Improvements:** Streamline processes for call reasons with high AHT to reduce handle times.
+1. **Agent Training**:
+   - Schedule training sessions focused on de-escalation techniques to handle negative sentiments.
+   - Provide targeted training for agents handling "Billing" inquiries to reduce AHT.
+
+2. **Staffing Adjustments**:
+   - Adjust staffing levels during peak days (Thursdays and Fridays) to meet SL targets.
+   - Allocate more resources to channels or call reasons with higher volumes of negative sentiments.
+
+3. **Process Improvements**:
+   - Streamline processes for call reasons with high AHT to reduce handle times.
+   - Explore quick email response strategies for cases that are not typical to reduce AHT in emails.
+
+4. **Sentiment Monitoring**:
+   - Implement sentiment analysis tools for real-time monitoring to proactively address customer concerns.
 
 ## Limitations
 
-- **Synthetic Data:** Based on synthetic data, which may not fully capture real-world complexities.
-- **Tool Access:** Limited access to advanced analytics tools may restrict the depth of analysis.
-- **Generalization:** Insights and recommendations may require adaptation for real-world scenarios.
+- **Dataset Constraints**: The analysis is based on a specific dataset, which may not fully capture real-world complexities.
+- **Missing Values**: Some fields, such as CSAT, contain missing values that were ignored, which may affect the analysis.
+- **Generalization**: Insights and recommendations may require adaptation when applied to different organizations or datasets.
 
-## Conclusion
+## Skills Showcased
 
-This project provides a comprehensive analysis of contact center performance, focusing on AHT, interaction duration, and service level adherence. The insights gained will help optimize agent skill routing and improve service levels, ensuring customer satisfaction.
+1. **Data Cleaning and Preparation**:
+   - Removed irrelevant columns and handled missing values.
+   - Created helper columns to enhance analysis capabilities.
+
+2. **Exploratory Data Analysis (EDA)**:
+   - Used pivot tables and charts in Excel to uncover patterns and trends.
+   - Investigated relationships between key performance indicators and various factors.
+
+3. **Statistical Analysis**:
+   - Conducted Chi-Square tests to examine relationships between categorical variables.
+   - Performed ANOVA tests to compare means across different groups.
+
+4. **Data Visualization**:
+   - Developed interactive dashboards and visualizations in Power BI.
+   - Utilized Excel charts to present data insights effectively.
+
+5. **Statistical Interpretation**:
+   - Interpreted p-values and statistical test results to make data-driven conclusions.
 
 ## Future Work
 
-- **Real-time Data Analysis:** Integrate real-time data analysis for more dynamic decision-making.
-- **Advanced Analytics:** Implement machine learning models to predict interaction volumes and required staffing levels.
-- **Expanded Metrics:** Include additional metrics such as agent adherence and schedule efficiency.
+- **Real-time Data Analysis**: Integrate real-time data streams for more dynamic decision-making.
+- **Advanced Analytics**: Implement machine learning models to predict interaction volumes and required staffing levels.
+- **Expanded Metrics**: Include additional metrics such as agent adherence, schedule efficiency, and first-call resolution.
+- **Customer Segmentation**: Analyze performance metrics across different customer segments for targeted strategies.
 
 ## Acknowledgements
 
@@ -182,15 +229,8 @@ Special thanks to Dash BPO South Africa for the opportunity to develop and showc
 
 For questions or collaboration, please reach out:
 
-- **Email:** dante4data@example.com
-- **LinkedIn:** [Thando Vilakazi](https://www.linkedin.com/in/thando-vilakazi/)
-```
+- **Email**: dante4data@example.com
+- **LinkedIn**: [Thando Vilakazi](https://www.linkedin.com/in/thando-vilakazi/)
 
-### Key Enhancements:
-1. **Structured Layout:** Added a clear Table of Contents to improve navigation.
-2. **Value and Distinction:** Highlighted why your project is unique and valuable for WFM teams.
-3. **Installation & Usage:** Provided clear steps for setting up and using the project.
-4. **Future Work:** Included a section for potential future improvements.
-5. **Contact Information:** Added a contact section to encourage collaboration and feedback.
-
-You can further tailor this template as your project evolves. If you have any more sections to refine or additional content to add, feel free to ask!
+---
+![image](https://github.com/user-attachments/assets/067dc799-c10b-4707-b47c-9f56a6436c6c)
