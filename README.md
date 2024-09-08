@@ -10,6 +10,7 @@ This project focuses on analyzing key performance metrics within a contact cente
 - [Objectives](#objectives)
 - [Value and Application](#value-and-application)
 - [How the Data Was Colloected](how-the-data-was-collected)
+- [How to Run he Project](how-to-run-the-project)
 - [Dataset](#dataset)
 - [Data Cleaning and Preparation](#data-cleaning-and-preparation)
 - [Analysis Plan](#analysis-plan)
@@ -46,6 +47,59 @@ This project is distinct because it focuses on the specific needs of WFM teams f
 ### **How the Data Was Collected** 
 
 The dataset used for this project was sourced from Kaggle, a platform offering a wide variety of open-source datasets. The dataset focuses on call center interactions, providing information such as call sentiment, call duration, customer satisfaction (CSAT), communication channel, and response time category. The fields were chosen to analyze performance metrics relevant to workforce management and contact center efficiency. 
+
+### **How to Run the Project** 
+
+  
+
+#### **Requirements** 
+
+To run and reproduce this project, the following tools are required: 
+
+- **Excel**: Used for initial data cleaning, pivot tables, and visualization. 
+
+- **Power BI**: Used for advanced visualizations, reporting, and dashboard creation. 
+
+- **Python (Optional)**: To further analyze data or automate processes (if needed). 
+
+- **Kaggle account**: To download the dataset. 
+
+  
+
+#### **Steps to Run the Project** 
+
+1. **Data Preparation**: 
+
+   - Download the dataset from Kaggle. [Link to Dataset](https://www.kaggle.com/) 
+
+   - Load the dataset into Excel for cleaning. Remove unnecessary fields like `Customer Name`, `State`, and `City`. 
+
+   - Format the `Timestamp` field and ensure data consistency, such as handling missing `CSAT` values by ignoring them. 
+
+  
+
+2. **Exploratory Data Analysis**: 
+
+   - Open the cleaned Excel file and create pivot tables for metrics like **Average Call Duration**, **Sum of Duration**, and **Sentiment Distribution**. 
+
+   - Use Excel's functions and formulas (e.g., `AVERAGEIF`, `COUNT`) to calculate these metrics. 
+
+  
+
+3. **Power BI Visualizations**: 
+
+   - Load the cleaned data into Power BI. 
+
+   - Create visuals to showcase insights such as the distribution of call durations, customer sentiment across channels, and service level adherence. 
+
+   - Use DAX formulas to calculate metrics such as **Response Time Percentage** and **Total Call Duration in Hours** (examples provided in the README). 
+
+
+4. **Statistical Analysis**: 
+
+   - Perform Chi-Square and ANOVA tests to check relationships between categorical variables like **Sentiment** and **Channel**, and continuous variables like **Call Duration**. 
+
+   - Interpret the p-values to understand if there are statistically significant relationships. 
 
 Given that the data was collected externally, it may not perfectly reflect real-world conditions specific to our company, but it provides a strong foundation for similar analyses in a real-world setting. 
 
