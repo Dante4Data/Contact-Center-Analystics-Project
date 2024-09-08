@@ -9,6 +9,7 @@ This project focuses on analyzing key performance metrics within a contact cente
 - [Overview](#overview)
 - [Objectives](#objectives)
 - [Value and Application](#value-and-application)
+- [How the Data Was Colloected](how-the-data-was-collected)
 - [Dataset](#dataset)
 - [Data Cleaning and Preparation](#data-cleaning-and-preparation)
 - [Analysis Plan](#analysis-plan)
@@ -41,6 +42,12 @@ Specific objectives include:
 ## Value and Application
 
 This project is distinct because it focuses on the specific needs of WFM teams from call data. By analyzing how sentiment and customer satisfaction (CSAT) relate to AHT and SLAs over time across channels of contact, this project provides actionable insights that directly influence operational efficiency and agent performance.
+
+### **How the Data Was Collected** 
+
+The dataset used for this project was sourced from Kaggle, a platform offering a wide variety of open-source datasets. The dataset focuses on call center interactions, providing information such as call sentiment, call duration, customer satisfaction (CSAT), communication channel, and response time category. The fields were chosen to analyze performance metrics relevant to workforce management and contact center efficiency. 
+
+Given that the data was collected externally, it may not perfectly reflect real-world conditions specific to our company, but it provides a strong foundation for similar analyses in a real-world setting. 
 
 Key distinctions include:
 
