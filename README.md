@@ -42,7 +42,7 @@ Specific objectives include:
 
 ## Value and Application
 
-This project is distinct because it focuses on the specific needs of WFM teams from call data. By analyzing how sentiment and customer satisfaction (CSAT) relate to AHT and SLAs over time across channels of contact, this project provides actionable insights that directly influence operational efficiency and agent performance.
+This project is distinct because it focuses on the specific needs of WFM teams from call data. By analyzing how sentiment and customer satisfaction (CSAT) relate to AHT and SLAs over time across channels of contact, this project provides actionable insights that directly influence operational efficiency and workforce performance.
 
 ### **How the Data Was Collected** 
 
@@ -70,7 +70,7 @@ To run and reproduce this project, the following tools are required:
 
 1. **Data Preparation**: 
 
-   - Download the dataset from Kaggle. [Link to Dataset](https://www.kaggle.com/) 
+   - Download the dataset from Kaggle. [Link to Dataset]([https://www.kaggle.com/](https://ko-fi.com/s/df3c8ba99e)) 
 
    - Load the dataset into Excel for cleaning. Remove unnecessary fields like `Customer Name`, `State`, and `City`. 
 
