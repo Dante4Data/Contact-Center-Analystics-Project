@@ -42,7 +42,7 @@ Specific objectives include:
 
 ## Value and Application
 
-This project is distinct because it focuses on the specific needs of WFM teams from call data. By analyzing how sentiment and customer satisfaction (CSAT) relate to AHT and SLAs over time across channels of contact, this project provides actionable insights that directly influence operational efficiency and workforce performance.
+This project provides a brief exploration of statistical methods that can be incorporated into routine WFM reporting to monitor and analyze the relationships between key performance metrics.This project is distinct because it focuses on the specific needs of WFM teams from call data. By analyzing how sentiment and customer satisfaction (CSAT) relate to AHT and SLAs over time across channels of contact, this project provides actionable insights that directly influence operational efficiency and workforce performance.
 
 ### **How the Data Was Collected** 
 
@@ -236,10 +236,13 @@ Utilized Power BI to create interactive visualizations and dashboards. Examples 
 1. **Agent Training**:
    - Schedule training sessions focused on de-escalation techniques to handle negative sentiments.
    - Provide targeted training for agents handling "Billing" inquiries to reduce AHT.
+   - Implementing structured templates for documenting notes on common call reasons enhances efficiency. These templates can be tailored to specific dispositions, ensuring that key details are captured during interactions, thus minimizing unnecessary probing and reducing talk time.
 
 2. **Staffing Adjustments**:
    - Adjust staffing levels during peak days (Thursdays and Fridays) to meet SL targets.
    - Allocate more resources to channels or call reasons with higher volumes of negative sentiments.
+   - By calculating and recording the average handle time for each call reason, this data can be paired with dashboard indicators of interaction volume by reason/issue to make informed, real-time decisions on agent skill routing.
+
 
 3. **Process Improvements**:
    - Streamline processes for call reasons with high AHT to reduce handle times.
@@ -290,7 +293,7 @@ Special thanks to Dash BPO South Africa for the opportunity to develop and showc
 
 For questions or collaboration, please reach out:
 
-- **Email**: dante4data@example.com
+- **Email**: thando.vilakazi007@gmail.com
 - **LinkedIn**: [Thando Vilakazi](https://www.linkedin.com/in/thando-vilakazi/)
 
 ---
